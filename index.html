@@ -1,0 +1,697 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
+  :root {
+    --qpon-orange: #FF6B2C;
+    --qpon-dark: #1A1A2E;
+    --qpon-green: #00C896;
+    --qpon-red: #E53E3E;
+    --qpon-gold: #F6AD55;
+    --qpon-navy: #16213E;
+    --qpon-card: #ffffff;
+    --qpon-bg: #F7F8FC;
+    --qpon-border: #E2E8F0;
+    --step-size: 32px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; }
+  .guide-wrap {
+    background: var(--qpon-bg);
+    padding: 0 0 24px 0;
+    width: 210mm;
+    max-width: 100%;
+    min-height: 297mm;
+    margin: 0 auto;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+  }
+  .guide-header {
+    background: var(--qpon-dark);
+    padding: 20px 24px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .logo-img {
+    height: 32px;
+    width: auto;
+    display: block;
+  }
+  .header-title {
+    text-align: right;
+  }
+  .header-title h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: white;
+    line-height: 1.2;
+  }
+  .header-title p {
+    font-size: 13px;
+    color: #A0AEC0;
+    margin-top: 2px;
+  }
+  .header-title span { color: var(--qpon-orange); font-weight: 600; }
+
+  .important-banner {
+    background: #1D4E3A;
+    border-left: 4px solid var(--qpon-green);
+    margin: 16px 16px 0;
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .important-banner i { color: var(--qpon-green); font-size: 18px; }
+  .important-banner p {
+    font-size: 13px;
+    color: #E2E8F0;
+    font-weight: 400;
+  }
+  .important-banner strong { color: white; font-weight: 600; }
+  .important-banner .before-text { color: var(--qpon-gold); font-weight: 700; }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: start;
+    gap: 12px;
+    padding: 16px;
+  }
+  .step-card {
+    background: white;
+    border-radius: 12px;
+    border: 0.5px solid var(--qpon-border);
+    overflow: hidden;
+  }
+  .step-header {
+    padding: 12px 14px 10px;
+    border-bottom: 0.5px solid var(--qpon-border);
+  }
+  .step-num-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+  .step-num {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--qpon-orange);
+    color: white;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .step-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: #1A202C;
+  }
+  .step-desc {
+    font-size: 11px;
+    color: #718096;
+    line-height: 1.5;
+    padding-left: 34px;
+  }
+  .step-body { padding: 12px 14px; }
+
+  .phone-mockup-row {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+  .phone-mock {
+    flex: 1;
+    background: #0F0F1A;
+    border-radius: 10px;
+    overflow: hidden;
+    min-height: 100px;
+  }
+  .phone-mock-header {
+    background: #1A1A2E;
+    padding: 5px 8px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .phone-mock-header span {
+    font-size: 9px;
+    color: #718096;
+  }
+  .pm-dot { width: 4px; height: 4px; border-radius: 50%; }
+
+  .app-home-screen { padding: 8px; background: #F7F8FC; border-radius: 0 0 10px 10px; }
+  .app-welcome { font-size: 8px; color: #718096; margin-bottom: 4px; }
+  .app-welcome strong { color: #1A202C; font-weight: 600; font-size: 9px; }
+  .app-savings-chip {
+    background: var(--qpon-orange);
+    color: white;
+    font-size: 7px;
+    padding: 3px 6px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .app-deals-row { display: flex; gap: 3px; margin-bottom: 5px; }
+  .app-deal-chip {
+    font-size: 7px;
+    padding: 2px 5px;
+    border-radius: 4px;
+    border: 0.5px solid #E2E8F0;
+    color: #4A5568;
+    background: white;
+  }
+  .app-deal-chip.active { background: #FFF5F0; border-color: var(--qpon-orange); color: var(--qpon-orange); }
+  .deal-card-mini {
+    background: white;
+    border-radius: 6px;
+    border: 0.5px solid #E2E8F0;
+    overflow: hidden;
+    margin-bottom: 4px;
+  }
+  .deal-card-img {
+    height: 30px;
+    background: linear-gradient(135deg, #FF6B2C22, #FF6B2C44);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .deal-card-img i { color: var(--qpon-orange); font-size: 14px; }
+  .deal-card-info { padding: 3px 5px; }
+  .deal-name { font-size: 7px; font-weight: 600; color: #1A202C; }
+  .deal-price { font-size: 7px; color: var(--qpon-orange); font-weight: 700; }
+  .deal-old { font-size: 6px; color: #A0AEC0; text-decoration: line-through; }
+
+  .deal-details-screen { padding: 8px; background: white; border-radius: 0 0 10px 10px; }
+  .dd-back { display: flex; align-items: center; gap: 4px; font-size: 8px; color: #718096; margin-bottom: 6px; }
+  .dd-title { font-size: 9px; font-weight: 700; color: #1A202C; margin-bottom: 2px; }
+  .dd-merchant { font-size: 7px; color: #718096; margin-bottom: 6px; }
+  .dd-badge {
+    display: inline-block;
+    background: #FFF5F0;
+    color: var(--qpon-orange);
+    font-size: 7px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    border: 0.5px solid #FFD9C8;
+  }
+  .dd-price-row { display: flex; align-items: baseline; gap: 4px; margin-bottom: 6px; }
+  .dd-price { font-size: 12px; font-weight: 700; color: #1A202C; }
+  .dd-price-old { font-size: 8px; color: #A0AEC0; text-decoration: line-through; }
+  .dd-stats { display: flex; gap: 8px; margin-bottom: 8px; }
+  .dd-stat { text-align: center; }
+  .dd-stat-num { font-size: 8px; font-weight: 700; color: #1A202C; }
+  .dd-stat-lbl { font-size: 6px; color: #A0AEC0; }
+  .dd-btn {
+    width: 100%;
+    background: var(--qpon-orange);
+    color: white;
+    font-size: 8px;
+    font-weight: 600;
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  .coupon-screen { padding: 8px; background: white; border-radius: 0 0 10px 10px; }
+  .cs-status { display: flex; align-items: center; gap: 4px; margin-bottom: 6px; }
+  .cs-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--qpon-green); }
+  .cs-active { font-size: 8px; color: var(--qpon-green); font-weight: 600; }
+  .cs-title { font-size: 10px; font-weight: 700; color: #1A202C; margin-bottom: 2px; }
+  .cs-price { font-size: 9px; color: var(--qpon-orange); font-weight: 700; margin-bottom: 8px; }
+  .qr-box {
+    background: white;
+    border: 0.5px solid #E2E8F0;
+    border-radius: 6px;
+    padding: 6px;
+    text-align: center;
+    margin-bottom: 6px;
+  }
+  .qr-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 8px);
+    grid-template-rows: repeat(6, 8px);
+    gap: 1px;
+    margin: 0 auto 4px;
+    width: fit-content;
+  }
+  .qr-cell { border-radius: 1px; }
+  .qr-b { background: #1A202C; }
+  .qr-w { background: white; }
+  .coupon-code-label { font-size: 7px; color: #A0AEC0; margin-bottom: 2px; }
+  .coupon-code { font-size: 9px; font-weight: 700; color: #1A202C; font-family: 'DM Mono', monospace; letter-spacing: 0.5px; }
+  .use-btn {
+    width: 100%;
+    background: var(--qpon-orange);
+    color: white;
+    font-size: 8px;
+    font-weight: 600;
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+  }
+  .tip-pill {
+    background: #FFF9E6;
+    border: 0.5px solid #F6AD55;
+    border-radius: 5px;
+    padding: 4px 8px;
+    font-size: 10px;
+    color: #744210;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 6px;
+  }
+
+  .merchant-portal { padding: 8px; background: #F7F8FC; border-radius: 0 0 10px 10px; }
+  .mp-form { background: white; border-radius: 6px; padding: 8px; border: 0.5px solid #E2E8F0; }
+  .mp-brand { display: flex; align-items: center; gap: 4px; margin-bottom: 6px; }
+  .mp-brand-icon { width: 16px; height: 16px; background: var(--qpon-orange); border-radius: 4px; display: flex; align-items: center; justify-content: center; }
+  .mp-brand-name { font-family: 'Syne', sans-serif; font-size: 9px; font-weight: 700; color: var(--qpon-dark); }
+  .mp-label { font-size: 7px; color: #718096; margin-bottom: 2px; }
+  .mp-input {
+    background: #F7F8FC;
+    border: 0.5px solid #E2E8F0;
+    border-radius: 4px;
+    padding: 3px 6px;
+    font-size: 8px;
+    color: #1A202C;
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  .mp-btn {
+    width: 100%;
+    background: var(--qpon-dark);
+    color: white;
+    font-size: 8px;
+    font-weight: 600;
+    padding: 5px;
+    border-radius: 4px;
+    text-align: center;
+    margin-top: 2px;
+  }
+  .mp-dashboard { background: white; border-radius: 6px; padding: 8px; border: 0.5px solid #E2E8F0; }
+  .mp-dash-header { font-size: 8px; font-weight: 600; color: #1A202C; margin-bottom: 6px; }
+  .mp-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+  .mp-stat {
+    background: #F7F8FC;
+    border-radius: 5px;
+    padding: 5px;
+  }
+  .mp-stat-icon { font-size: 12px; margin-bottom: 2px; }
+  .mp-stat-val { font-size: 8px; font-weight: 700; color: #1A202C; }
+  .mp-stat-lbl { font-size: 6px; color: #A0AEC0; }
+
+  .scan-tabs { display: flex; gap: 0; margin-bottom: 8px; border-radius: 6px; overflow: hidden; border: 0.5px solid #E2E8F0; }
+  .scan-tab {
+    flex: 1;
+    padding: 5px;
+    text-align: center;
+    font-size: 9px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .scan-tab.active-scan { background: var(--qpon-dark); color: white; }
+  .scan-tab.active-manual { background: var(--qpon-orange); color: white; }
+  .scan-tab.inactive { background: white; color: #718096; }
+
+  .scan-area {
+    background: #0F0F1A;
+    border-radius: 8px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 8px;
+  }
+  .scan-corner {
+    position: absolute;
+    width: 12px; height: 12px;
+    border-color: var(--qpon-orange);
+    border-style: solid;
+  }
+  .scan-corner.tl { top: 8px; left: 8px; border-width: 2px 0 0 2px; }
+  .scan-corner.tr { top: 8px; right: 8px; border-width: 2px 2px 0 0; }
+  .scan-corner.bl { bottom: 8px; left: 8px; border-width: 0 0 2px 2px; }
+  .scan-corner.br { bottom: 8px; right: 8px; border-width: 0 2px 2px 0; }
+  .scan-line {
+    position: absolute;
+    left: 12px; right: 12px; height: 1px;
+    background: var(--qpon-orange);
+    top: 30px;
+    opacity: 0.8;
+  }
+
+  .manual-input-box {
+    background: #F7F8FC;
+    border: 0.5px solid #E2E8F0;
+    border-radius: 6px;
+    padding: 6px;
+    margin-bottom: 6px;
+  }
+  .manual-lbl { font-size: 7px; color: #718096; margin-bottom: 3px; }
+  .manual-field {
+    background: white;
+    border: 0.5px solid #E2E8F0;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 8px;
+    color: #A0AEC0;
+    width: 100%;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .verify-btn {
+    width: 100%;
+    background: var(--qpon-dark);
+    color: white;
+    font-size: 8px;
+    font-weight: 600;
+    padding: 5px;
+    border-radius: 4px;
+    text-align: center;
+  }
+
+  .success-screen {
+    background: var(--qpon-green);
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+  }
+  .success-icon { font-size: 28px; color: white; margin-bottom: 6px; }
+  .success-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px; color: white; margin-bottom: 4px; }
+  .success-sub { font-size: 9px; color: rgba(255,255,255,0.85); margin-bottom: 8px; line-height: 1.4; }
+  .scan-next-btn {
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.4);
+    color: white;
+    font-size: 9px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 5px;
+    display: inline-block;
+  }
+
+  .bill-summary {
+    background: #F7F8FC;
+    border-radius: 8px;
+    border: 0.5px solid #E2E8F0;
+    overflow: hidden;
+  }
+  .bill-header {
+    background: var(--qpon-dark);
+    padding: 8px 12px;
+    font-size: 10px;
+    font-weight: 600;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .bill-row {
+    padding: 8px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 0.5px solid #E2E8F0;
+  }
+  .bill-row:last-child { border-bottom: none; }
+  .bill-lbl { font-size: 11px; color: #4A5568; }
+  .bill-val { font-size: 11px; font-weight: 500; color: #1A202C; }
+  .bill-row.discount .bill-lbl { color: var(--qpon-red); }
+  .bill-row.discount .bill-val { color: var(--qpon-red); font-weight: 600; }
+  .bill-row.total { background: white; }
+  .bill-row.total .bill-lbl { font-weight: 700; color: #1A202C; font-size: 12px; }
+  .bill-row.total .bill-val { font-weight: 700; color: var(--qpon-green); font-size: 14px; }
+  .bill-note {
+    background: #FFFBF0;
+    border: 0.5px solid #F6AD55;
+    border-radius: 6px;
+    padding: 8px 10px;
+    margin-top: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .bill-note i { color: var(--qpon-gold); font-size: 14px; flex-shrink: 0; }
+  .bill-note p { font-size: 10px; color: #744210; line-height: 1.4; }
+  .bill-note strong { font-weight: 700; color: #744210; }
+
+  .guide-footer {
+    background: var(--qpon-dark);
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0 16px;
+    border-radius: 12px;
+  }
+  .footer-brand { display: flex; align-items: center; gap: 8px; }
+  .footer-support { text-align: center; }
+  .footer-support-lbl {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    color: var(--qpon-orange);
+    margin-bottom: 3px;
+  }
+  .footer-contact { display: flex; gap: 12px; }
+  .footer-contact-item { display: flex; align-items: center; gap: 4px; font-size: 10px; color: #A0AEC0; }
+  .footer-meta { text-align: right; }
+  .footer-meta p { font-size: 10px; color: #718096; line-height: 1.6; }
+
+  .step-checks { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .step-check { display: flex; align-items: center; gap: 3px; font-size: 9px; color: #276749; font-weight: 500; }
+  .step-check i { color: var(--qpon-green); font-size: 10px; }
+
+  .arrow-area { display: flex; align-items: center; justify-content: center; margin: 4px 0; }
+  .arrow-area i { color: var(--qpon-orange); font-size: 18px; }
+
+  .portal-row { display: flex; gap: 6px; }
+  .portal-row > * { flex: 1; }
+
+  @media (max-width: 900px) {
+    .guide-wrap { width: 100%; min-height: 0; }
+    .steps-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .guide-header { padding: 16px 18px; }
+    .header-title { text-align: left; }
+    .important-banner { margin: 12px 12px 0; }
+    .steps-grid { grid-template-columns: 1fr; padding: 12px; }
+    .guide-footer { flex-direction: column; align-items: flex-start; margin: 0 12px; }
+    .footer-support, .footer-meta { text-align: left; }
+  }
+</style>
+
+<div class="guide-wrap">
+  <div class="guide-header">
+    <div class="logo-area">
+      <img src="assets/qpon-logo.png" alt="QPON" class="logo-img">
+    </div>
+    <div class="header-title">
+      <h1>Deal Redemption — Counter Guide</h1>
+      <p>Validate &amp; process customer deals in under <span>30 seconds.</span></p>
+    </div>
+  </div>
+
+  <div class="important-banner">
+    <i class="ti ti-shield-check" aria-hidden="true"></i>
+    <p><strong>IMPORTANT:</strong> Always verify the deal in Merchant Portal <span class="before-text">BEFORE</span> applying discount.</p>
+  </div>
+
+  <div class="steps-grid">
+
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-num-row">
+          <div class="step-num">1</div>
+          <div class="step-title">Customer Opens QPON App</div>
+        </div>
+        <div class="step-desc">Ask customer to open the coupon located in the wallet.</div>
+      </div>
+      <div class="step-body">
+        <div class="phone-mockup-row">
+          <div class="phone-mock">
+            <div class="phone-mock-header">
+              <div class="pm-dot" style="background:#FF5F57"></div>
+              <div class="pm-dot" style="background:#FEBC2E"></div>
+              <div class="pm-dot" style="background:#28C840"></div>
+              <span style="margin-left:auto">9:41</span>
+            </div>
+            <img src="assets/1.png" alt="Coupon Details — The Ocean Saver" style="display:block;width:100%">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-num-row">
+          <div class="step-num">2</div>
+          <div class="step-title">Customer Shows Coupon</div>
+        </div>
+        <div class="step-desc">Ask customer to show the coupon (QR or code).</div>
+      </div>
+      <div class="step-body">
+        <div class="phone-mockup-row">
+          <div class="phone-mock">
+            <div class="phone-mock-header">
+              <div class="pm-dot" style="background:#FF5F57"></div>
+              <div class="pm-dot" style="background:#FEBC2E"></div>
+              <div class="pm-dot" style="background:#28C840"></div>
+              <span style="margin-left:auto">15:05</span>
+            </div>
+            <img src="assets/2.png" alt="Scan to Redeem — QR code" style="display:block;width:100%">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-num-row">
+          <div class="step-num">3</div>
+          <div class="step-title">Open Merchant Portal</div>
+        </div>
+        <div class="step-desc">Sign in and go to dashboard. Tap the scan button.</div>
+      </div>
+      <div class="step-body">
+        <div class="phone-mockup-row">
+          <div class="phone-mock">
+            <div class="phone-mock-header">
+              <div class="pm-dot" style="background:#FF5F57"></div>
+              <div class="pm-dot" style="background:#FEBC2E"></div>
+              <div class="pm-dot" style="background:#28C840"></div>
+              <span style="margin-left:auto">9:41</span>
+            </div>
+            <img src="assets/3.png" alt="Merchant Portal — Sign In" style="display:block;width:100%">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-num-row">
+          <div class="step-num">4</div>
+          <div class="step-title">Scan QR or Manual Entry</div>
+        </div>
+        <div class="step-desc">Preferred: Scan QR code · Backup: Enter code manually</div>
+      </div>
+      <div class="step-body">
+        <div class="phone-mockup-row">
+          <div class="phone-mock">
+            <div class="phone-mock-header">
+              <div class="pm-dot" style="background:#FF5F57"></div>
+              <div class="pm-dot" style="background:#FEBC2E"></div>
+              <div class="pm-dot" style="background:#28C840"></div>
+              <span style="margin-left:auto">9:41</span>
+            </div>
+            <img src="assets/4.png" alt="Redeem Coupon — Scan QR or Manual Entry" style="display:block;width:100%">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-num-row">
+          <div class="step-num">5</div>
+          <div class="step-title">Confirm Success</div>
+        </div>
+        <div class="step-desc">Wait for GREEN approval screen. Only then proceed.</div>
+      </div>
+      <div class="step-body">
+        <div class="phone-mockup-row">
+          <div class="phone-mock">
+            <div class="phone-mock-header">
+              <div class="pm-dot" style="background:#FF5F57"></div>
+              <div class="pm-dot" style="background:#FEBC2E"></div>
+              <div class="pm-dot" style="background:#28C840"></div>
+              <span style="margin-left:auto">9:41</span>
+            </div>
+            <img src="assets/5.png" alt="Redeemed! Coupon verified" style="display:block;width:100%">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-num-row">
+          <div class="step-num">6</div>
+          <div class="step-title">Apply Discount &amp; Close Bill</div>
+        </div>
+        <div class="step-desc">Apply the discount to the bill and complete the transaction.</div>
+      </div>
+      <div class="step-body">
+        <div class="bill-summary">
+          <div class="bill-header">
+            <i class="ti ti-receipt" style="font-size:12px" aria-hidden="true"></i>
+            BILL SUMMARY <span style="font-weight:400;opacity:0.6;font-size:9px">(Example)</span>
+          </div>
+          <div class="bill-row">
+            <div class="bill-lbl">Bill Total</div>
+            <div class="bill-val">LKR 5,000.00</div>
+          </div>
+          <div class="bill-row discount">
+            <div class="bill-lbl">QPON Discount (20%)</div>
+            <div class="bill-val">– LKR 1,000.00</div>
+          </div>
+          <div class="bill-row total">
+            <div class="bill-lbl">Customer Pays</div>
+            <div class="bill-val">LKR 4,000.00</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="guide-footer">
+    <div class="footer-brand">
+      <div class="logo-icon">Q</div>
+      <div class="logo-text">QPON</div>
+    </div>
+    <div class="footer-support">
+      <div class="footer-support-lbl">Merchant Support</div>
+      <div class="footer-contact">
+        <div class="footer-contact-item">
+          <i class="ti ti-phone" aria-hidden="true"></i>
+          <span>0XX XXX XXXX</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="ti ti-mail" aria-hidden="true"></i>
+          <span>support@qpon.lk</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <p>Merchant Operations Guide v1.0</p>
+      <p>Pin behind counter · A4 Portrait</p>
+    </div>
+  </div>
+</div>
